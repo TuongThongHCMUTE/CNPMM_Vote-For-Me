@@ -1,0 +1,48 @@
+.comment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 16px 0;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+}
+
+.avatar img {
+    width: 100%;
+}
+
+.comment {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+    margin-left: 8px;
+    padding: 8px 4px 8px 24px;
+    border-radius: 26px;
+    border: solid 1px #e5e5e5;
+}
+
+.content {
+    flex: 1;
+    font-size: 18px;
+    color: #fff;
+    margin-right: 16px;
+}
+
+.user-name {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.more {
+    all: unset;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    padding: 8px;
+}

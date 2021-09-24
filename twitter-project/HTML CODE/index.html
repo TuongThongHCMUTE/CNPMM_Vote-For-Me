@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Tweeter</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="post.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1 class="logo"><a href="#">twitter</a></h1>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><span href="#" class="user-name">Hello, Tuong Le</span></li>
+                    <li><a href="#">Sign out</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- FORM -->
+        <section class="form-section">
+            <form class="form">
+                <textarea
+                    type="text"
+                    name="content"
+                    id="content"
+                    class="content"
+                    placeholder="What's happening?"
+                ></textarea>
+                <button class="btn" type="submit">Tweet</button>
+            </form>
+        </section>
+        <!-- POST -->
+        <section class="post-section">
+            <div class="post-list">
+                <div class="post-item">
+                    <p class="post-content">
+                        The border post, which divides the Afghan town of Spin Boldak in Kandahar province on one side and the Pakistani town of Chaman on the other, is the second busiest crossing between the countries. It links the city of Kandahar to Pakistan's ports, and sees some 900 trucks pass through each day.
+                    </p>
+                    <div class="post-footer">
+                        <div class="post-infors">
+                            <span>by Tuong Le</span>
+                            <span>Date: 14/07/2021</span>
+                        </div>
+                        <div class="post-edit-delete">
+                            <span>Edit</span>
+                            <span>Delete</span>
+                            <span class="delete-question">Are you sure?</span>
+                            <span>Yes</span>
+                            <span>No</span>
+                        </div>
+                    </div>
+                    <div class="post-edit-form">
+                        <form class="edit-form">
+                            <textarea
+                                type="text"
+                                name="content"
+                                id="content"
+                                class="content"
+                                placeholder="What's happening?"
+                            >The border post, which divides the Afghan town of Spin Boldak in Kandahar province on one side and the Pakistani town of Chaman on the other, is the second busiest crossing between the countries. It links the city of Kandahar to Pakistan's ports, and sees some 900 trucks pass through each day.</textarea>
+                            <div class="btn-container">
+                                <button class="btn" type="button">Update</button>
+                                <button class="btn" type="button">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- LOGIN -->
+        <section class="auth-container">
+            <form class="auth-form">
+                <h2>Enter Your Account</h2>
+                <div class="error-message">Error: Your Password is not correct</div>
+                <input
+                    type="email"
+                    name="email"
+                    id=""
+                    required
+                    placeholder="Email"
+                />
+                <input
+                    type="password"
+                    name="password"
+                    id=""
+                    required
+                    placeholder="Password"
+                />
+                <button class="btn" type="submit">Register</button>
+            </form>
+        </section>
+        <!-- RESGISTER -->
+        <section class="auth-container">
+            <form class="auth-form">
+                <h2>Register New Account</h2>
+                <div class="error-message">Error: Your Password is not correct</div>
+                <input
+                    type="text"
+                    name="name"
+                    id=""
+                    required
+                    placeholder="Name"
+                />
+                <input
+                    type="email"
+                    name="email"
+                    id=""
+                    required
+                    placeholder="Email"
+                />
+                <input
+                    type="password"
+                    name="password"
+                    id=""
+                    required
+                    placeholder="Password"
+                />
+                <button class="btn" type="submit">Login</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

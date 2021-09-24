@@ -1,0 +1,41 @@
+.header{
+    width: 100;
+    padding: 3rem 0; /* Tren duoi 3, trai phai 0 */
+    /* flex dan theo chieu ngang */
+    display: flex;
+    justify-content: space-between;
+}
+
+nav{
+    width: 40%;
+}
+
+/* Set cho thanh tren */
+.main-nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Set cho logo */
+h1.logo{
+    font-size: var(--fs-large);
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.7s;
+}
+/* Set khi chon vao */
+a:hover{
+    color: var(--color-light-blue);
+}
+
+ul li{
+    list-style: none;
+}
+
+/* The span, class user-name */
+span.user-name{
+    color: var(--color-light-blue);
+}

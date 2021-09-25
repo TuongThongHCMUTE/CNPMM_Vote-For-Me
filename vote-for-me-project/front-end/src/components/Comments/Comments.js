@@ -8,7 +8,7 @@ import WriteComment from './WriteComment';
 
 import classes from './Comments.module.css';
 
-const Comments = props => {
+const Comments = () => {
     const { state, dispatch } = useContext(AppContext);
     const { comments, user } = state;
 
@@ -20,6 +20,7 @@ const Comments = props => {
             }
             const response = await axios(option);
             const comments = response.data.data.comments;
+
             dispatch({ type: "GET_ALL_COMMENTS", payload: comments});
         } catch (error) {
             console.log(error);
@@ -32,13 +33,12 @@ const Comments = props => {
 
     const newComments = comments.map((comment) => {
         if (user) {
-            return comment.author._id === user._id
+            return comment.author.name === user.userName
                 ? { ...comment, isEditable: true }
                 : comment
         } else {
             return { ...comment, isEditable: false}
         }
-        
     });
 
 

@@ -22,6 +22,17 @@ const appReducer = (state, action) => {
                     comment._id !== action.payload._id 
                 )
             }
+        case "GET_ALL_VOTES":
+            return {...state, votes: action.payload};
+        case "UPDATE_ONE_VOTE":
+            return {
+                ...state,
+                votes: state.votes.map((vote) => 
+                    vote._id === action.payload._id
+                        ? {...vote, ...action.payload}
+                        : vote
+                )
+            };
         default:
             return state;
     }

@@ -11,8 +11,8 @@ const CommentItem = props => {
 
     const {dispatch} = useContext(AppContext)
     const [commentToEdit, setCommentToEdit] = useState(comment);
-    const [openEditForm, setOpenEditForm] = useState(true)
-    const [openDeleteConfirm, setOpenDeleteConfirm] = useState(false)
+    const [openEditForm, setOpenEditForm] = useState(false);
+    const [openDeleteConfirm, setOpenDeleteConfirm] = useState(false);
     
     const updateComment = async () => {
         try{
@@ -28,7 +28,7 @@ const CommentItem = props => {
             };
             await axios(option);
             dispatch({
-                type:  "UPDATE_ONE_POST",
+                type:  "UPDATE_ONE_COMMENT",
                 payload: {...commentToEdit},
             });
         } catch (error) {
@@ -58,7 +58,11 @@ const CommentItem = props => {
 
     let date = new Date(comment.createdAt);
 
-    //console.log(comment);
+    const onOpenMore = () => {
+        setOpenEditForm((prevState) => {
+          return !prevState;
+        });
+      };
     
     return (
         <div className={classes["comment-item"]}>
@@ -68,10 +72,17 @@ const CommentItem = props => {
             <div className={classes.comment}>
                 <div className={classes["comment-view"]}>
                     <div className={classes.content}>
-                        <div className={classes["user-name"]}>{comment.author.name}</div>
+                        <div className={classes["user-name"]}>
+                            <h6>{comment.author.name}</h6>
+                            <p>
+                                Date:
+                                {" "}
+                                {`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}
+                            </p>
+                        </div>
                         <div className={classes["user-comment"]}>{comment.content}</div>
                     </div>
-                    {comment.isEditable && (<button className={classes.more}>
+                    {comment.isEditable && (<button className={classes.more} onClick={onOpenMore}>
                         <img src={moreImage} alt='more' />
                     </button>)}
                 </div>
@@ -91,18 +102,20 @@ const CommentItem = props => {
                                 }
                             ></textarea>
                             <div className={classes["btn-container"]}>
-                                <button 
-                                    className={classes["btn"]}
-                                    type="button"
-                                    onClick={() => updateComment(commentToEdit)}>Update</button>
-                                <button 
-                                    className={classes["btn"]}
-                                    type="button"
-                                    onClick={() => deleteComment(commentToEdit)}>Delete</button>
-                                <button 
-                                    className={classes["btn"]}
-                                    type="button"
-                                    onClick={() => setOpenEditForm(false)}>Cancel</button>
+                                {openDeleteConfirm ? (
+                                    <>
+                                        <p className="delete-question">Are you sure?</p>
+                                        <span onClick={() => deleteComment(comment._id)}>Yes</span>
+                                        <span onClick={() => setOpenDeleteConfirm(false)}>No</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span 
+                                            onClick={() => updateComment(commentToEdit)}>Update</span>
+                                        <span 
+                                            onClick={() => setOpenDeleteConfirm(true)}>Delete</span>
+                                    </>
+                                )}
                             </div>
                         </form>
                     </div>

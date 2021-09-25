@@ -10,8 +10,8 @@ import Post from "./components/Post/Post";
 import AppContext from "./store/AppContext";
 
 function App() {
-  const initSate = { user: null, comments: [] };
-  const [state, dispatch] = useReducer(AppReducer, initSate);
+  const initialSate = {user: null, comments: [], votes: [] };
+  const [state, dispatch] = useReducer(AppReducer, initialSate);
 
   const checkCurrentUser = useCallback( async () => {
     try {
@@ -20,12 +20,13 @@ function App() {
       const option = {
         method: "get",
         url: "api/v1/auth",
-        header: {
-          Authorization: `Bearer ${token}`
-        }
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       };
 
       const response = await axios(option);
+
       if(response.data.data.user) {
         const {userName} = response.data.data.user;
         dispatch({type: "CURRENT_USER", payload: {userName}});

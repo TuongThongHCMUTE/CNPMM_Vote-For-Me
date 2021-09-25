@@ -18,7 +18,7 @@ const Login = props => {
         setUserInput({...userInput, [e.target.name]: e.target.value });
     };
 
-    const submitHandler= async (e) => {
+    const onSubmitHandler= async (e) => {
         try{
             e.preventDefault();
             const option = {
@@ -42,7 +42,7 @@ const Login = props => {
             <Card>
                 <h3>Enter Your Account</h3>
 
-                <form className={classes.form} onSubmit={submitHandler}>
+                <form className={classes.form} onSubmit={onSubmitHandler}>
                     <Input input={{
                         id: 'email',
                         type: "email",
@@ -68,7 +68,6 @@ const Login = props => {
             </Card>
         </div>
     )
-
 }
 
 export default Login;

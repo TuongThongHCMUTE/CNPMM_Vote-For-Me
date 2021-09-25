@@ -20,7 +20,7 @@ exports.register = async (req, res, next)=>{
 
         res.status(200).json({
             status: 'success',
-            data: { token, userName: user.name }
+            data: { token, userName: user.name, userId: user._id}
         })
     } catch(error){
         next(error);
@@ -47,7 +47,7 @@ exports.login = async (req, res, next)=>{
 
             res.status(200).json({
                 status: 'success',
-                data: { token, userName: user.name }
+                data: { token, userName: user.name, userId: user._id}
             })
         } else {
             //Error: Password is not correct

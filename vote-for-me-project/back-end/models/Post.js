@@ -18,4 +18,4 @@ const postSchema = new mongoose.Schema({
 //Tao model dua vao co che postSchema
 const Post = mongoose.model('Post', postSchema)
 
-module.exports = Post; 
+module.exports = Post;

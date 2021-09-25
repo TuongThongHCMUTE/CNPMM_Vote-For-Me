@@ -19,25 +19,43 @@
     margin: auto;
 }
 
-h1 {
+.content h1 a {
     font-size: 36px;
+    font-weight: bolder;
+    color: #fff;
+    text-decoration: none;
     cursor: pointer;
 }
 
-.account {
+.content h1 a:hover {
+    font-size: 38px;
+}
+
+.main-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #e5e5e5;
-    font-size: 24px;
-    font-weight: lighter;
 }
 
-.user-name {
+.user-name,
+.sign-out,
+.login a,
+.register a {
+    font-size: 24px;
+    font-weight: lighter;
+    color: #e5e5e5;
+    text-decoration: none;
+}
+
+.user-name, .login a {
     margin-right: 48px;
 }
 
-.user-name:hover, .sign-out:hover {
+.user-name:hover, 
+.sign-out:hover,
+.login a:hover,
+.register a:hover 
+{
     cursor: pointer;
     color: #fff;
 }

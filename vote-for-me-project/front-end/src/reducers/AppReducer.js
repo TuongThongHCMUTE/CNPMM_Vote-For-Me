@@ -5,6 +5,8 @@ const appReducer = (state, action) => {
         case "GET_ALL_COMMENTS":
             return {...state, comments: action.payload};
         case "CREATE_ONE_COMMENT":
+            return {...state, comments: [...state.comments, action.payload]};
+        case "UPDATE_ONE_COMMENT":
             return {
                 ...state,
                 comments: state.comments.map((comment) => 

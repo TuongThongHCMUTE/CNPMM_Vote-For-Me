@@ -10,7 +10,7 @@ import Post from "./components/Post/Post";
 import AppContext from "./store/AppContext";
 
 function App() {
-  const initSate = { user: null, posts: [] };
+  const initSate = { user: null, comments: [] };
   const [state, dispatch] = useReducer(AppReducer, initSate);
 
   const checkCurrentUser = useCallback( async () => {
@@ -27,8 +27,8 @@ function App() {
 
       const response = await axios(option);
       if(response.data.data.user) {
-        const {user} = response.data.data.user;
-        dispatch({type: "CURRENT_USER", payload: {user}});
+        const {userName} = response.data.data.user;
+        dispatch({type: "CURRENT_USER", payload: {userName}});
       }
     } catch (error) {
       console.log(error);

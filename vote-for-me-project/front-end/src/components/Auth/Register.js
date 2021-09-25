@@ -3,7 +3,6 @@ import AppContext from '../../store/AppContext'
 import { useHistory } from 'react-router';
 import Card from '../UI/Card';
 import Input from '../UI/Input';
-import Button from '../UI/Button';
 
 import classes from './Register.module.css';
 import axios from 'axios';
@@ -16,21 +15,21 @@ const Register = (props) => {
         password: ""
     });
 
-    const [error, setError] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(null);
     const history = useHistory();
 
     const onChangeHandler = (e) => {
-        setUserInput({ ...userInput, [e.target.name]: e.target.vale });
-    }
+        setUserInput({ ...userInput, [e.target.name]: e.target.value });
+    };
 
     const submitHandler = async (e) => {
-        e.preventDefault();
         try {
+            e.preventDefault();
             const option = {
                 method: "post",
                 url: "/api/v1/auth/register",
                 data: userInput
-            }
+            };
 
             const response = await axios(option);
             const { token, userName } = response.data.data;
@@ -40,9 +39,9 @@ const Register = (props) => {
             
             history.push("/")
         } catch (error) {
-            setError(error.response.data.message)
+            setErrorMessage(error.response.data.message)
         }
-    }
+    };
 
     return (
         <div className={classes.register}>

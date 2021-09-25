@@ -11,7 +11,7 @@ import classes from './Login.module.css';
 const Login = props => {
     const { dispatch } = useContext(AppContext);
     const [userInput, setUserInput] = useState({ email: "", password: ""});
-    const [error, setError] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(null);
     const history = useHistory();
 
     const onChangeHandler = (e) => {
@@ -19,9 +19,8 @@ const Login = props => {
     };
 
     const submitHandler= async (e) => {
-        e.preventDefault();
-
         try{
+            e.preventDefault();
             const option = {
                 method: "post",
                 url: "/api/v1/auth/login",
@@ -34,7 +33,7 @@ const Login = props => {
 
             history.push("/");
         } catch (error){
-            setError(error.response.data.message)
+            setErrorMessage(error.response.data.message)
         }
     }
 

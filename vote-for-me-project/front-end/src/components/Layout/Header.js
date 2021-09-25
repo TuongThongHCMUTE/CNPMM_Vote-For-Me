@@ -26,7 +26,7 @@ const Header = props => {
                     { user ? (
                         <>
                             <div className={classes['user-name']}>
-                                Hello, Dinh Bach Thong
+                                Hello, { user.userName }
                             </div>
                             <div className={classes['sign-out']} onClick={signOut}>
                                 Sign out

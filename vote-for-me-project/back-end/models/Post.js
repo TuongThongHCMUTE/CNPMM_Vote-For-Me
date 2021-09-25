@@ -5,6 +5,9 @@ const mongoose = require('mongoose');
 //id duoc tu dong tao boi mongoDB
 const postSchema = new mongoose.Schema({
     content: {type: String, required: [true, 'Post must have content'], trim: true},
+    image: {type: String, trim: true},
+    view: {type: Number, 'default': 0 },
+    votes:  [{}],
     author: {
         //Chi lay userId
         type: mongoose.Schema.Types.ObjectId,

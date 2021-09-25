@@ -1,6 +1,7 @@
 const express = require('express');
 
-const {getAllPosts, createOnePost, updateOnePost, deleteOnePost} = require('../controllers/postController.js');
+const {getAllPosts, createOnePost, updateOnePost, deleteOnePost, getOnePostById,
+        updateListVotes} = require('../controllers/postController.js');
 
 const {verifyToken} = require('../middlewares/verifyToken');
 
@@ -10,7 +11,11 @@ const Router = express.Router();
 // Befor create post need to verify token
 Router.route('/').get(getAllPosts).post(verifyToken, createOnePost);
 
+
+//
+Router.route('/vote/:postId').put(verifyToken, updateListVotes)
+
 //Truyen vao id
-Router.route('/:postId').put(verifyToken, updateOnePost).delete(verifyToken, deleteOnePost);
+Router.route('/:postId').get(verifyToken, getOnePostById).put(verifyToken, updateOnePost).delete(verifyToken, deleteOnePost);
 
 module.exports = Router;

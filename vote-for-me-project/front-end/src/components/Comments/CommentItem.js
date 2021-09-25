@@ -27,6 +27,9 @@ const CommentItem = props => {
                 },
             };
             await axios(option);
+
+            console.log("CMT ", commentToEdit);
+
             dispatch({
                 type:  "UPDATE_ONE_COMMENT",
                 payload: {...commentToEdit},

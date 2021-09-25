@@ -6,7 +6,7 @@ const Button = (props) => {
     const btnClasses = `${classes.button} ${props.isActive ? classes.active : ''}`;
 
     return (
-        <div className={btnClasses}>
+        <div className={btnClasses} onClick={props.onClick}>
             {props.children}
         </div>
     );

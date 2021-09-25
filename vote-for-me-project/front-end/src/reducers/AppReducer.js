@@ -25,10 +25,16 @@ const appReducer = (state, action) => {
         case "GET_ALL_VOTES":
             return {...state, votes: action.payload};
         case "UPDATE_ONE_VOTE":
+            const newVotes = state.votes.map((vote) => {
+                if (vote.userId === action.payload.userId) {
+                    console.log(vote);
+                }
+            });
+
             return {
                 ...state,
                 votes: state.votes.map((vote) => 
-                    vote._id === action.payload._id
+                    vote.userId === action.payload.userId
                         ? {...vote, ...action.payload}
                         : vote
                 )

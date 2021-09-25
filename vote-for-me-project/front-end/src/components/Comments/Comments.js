@@ -16,7 +16,7 @@ const Comments = () => {
         try {
             const option = {
                 method: "get",
-                url: "/api/v1//posts/614e81971df0d12158424161",
+                url: "/api/v1//posts/614f5e3ae9e78f0c2c2013e0",
             }
             const response = await axios(option);
             const comments = response.data.data.comments;
@@ -33,14 +33,13 @@ const Comments = () => {
 
     const newComments = comments.map((comment) => {
         if (user) {
-            return comment.author.name === user.userName
+            return comment.author._id === user.userId
                 ? { ...comment, isEditable: true }
                 : comment
         } else {
             return { ...comment, isEditable: false}
         }
     });
-
 
     const commentsList = newComments.map(comment => (
         <CommentItem comment={comment} key={comment._id} />

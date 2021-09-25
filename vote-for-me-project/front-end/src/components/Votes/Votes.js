@@ -13,12 +13,10 @@ function Votes() {
         try {
             const option = {
                 method: "get",
-                url: "/api/v1//posts/614e81971df0d12158424161",
+                url: "/api/v1//posts/614f5e3ae9e78f0c2c2013e0",
             }
             const response = await axios(option);
             const votes = response.data.data.post.votes;
-
-            console.log("VOTE ", votes);
 
             dispatch({ type: "GET_ALL_VOTES", payload: votes});
         } catch (error) {

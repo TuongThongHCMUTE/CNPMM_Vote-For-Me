@@ -47,7 +47,7 @@ const WriteComment = props => {
         setCommentInput({ 
             ...commentInput, 
             [e.target.name]: e.target.value,
-            post: "614e81971df0d12158424161"
+            post: "614f5e3ae9e78f0c2c2013e0"
         })    
     }
  

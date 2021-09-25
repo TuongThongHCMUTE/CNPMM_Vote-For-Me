@@ -16,6 +16,6 @@ Router.route('/').get(getAllPosts).post(verifyToken, createOnePost);
 Router.route('/vote/:postId').put(verifyToken, updateListVotes)
 
 //Truyen vao id
-Router.route('/:postId').get(verifyToken, getOnePostById).put(verifyToken, updateOnePost).delete(verifyToken, deleteOnePost);
+Router.route('/:postId').get(getOnePostById).put(verifyToken, updateOnePost).delete(verifyToken, deleteOnePost);
 
 module.exports = Router;

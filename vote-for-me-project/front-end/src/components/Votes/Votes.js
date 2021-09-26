@@ -1,4 +1,5 @@
 import React, { useContext, useCallback, useEffect } from 'react';
+import {Link} from "react-router-dom";
 import AppContext from '../../store/AppContext';
 import Card from '../UI/Card';
 import VoteItem from './VoteItem';
@@ -34,7 +35,10 @@ function Votes() {
             <Card isTransparent="true" >
                 <h3>What do you think about that?</h3>
                 <div className={classes.line}></div>
-                {!user && (<div className={classes.notification}>Please login to vote for me!</div>)}
+                {!user && (<div className={classes.notification}>
+                    Please login to vote for me! 
+                    <Link to='/login'>Login now</Link> or <Link to='/register'>Register new account</Link>
+                </div>)}
                 <VoteItem id="good-vote" status="good" />
                 <VoteItem id="fine-vote" status="fine" />
                 <VoteItem id="bad-vote" status="bad" />

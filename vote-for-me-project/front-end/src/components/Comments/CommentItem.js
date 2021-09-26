@@ -20,7 +20,7 @@ const CommentItem = props => {
             const token = localStorage.getItem("token");
             const option = {
                 method: "put",
-                url: `/api/v1/comments/${comment._id}`,
+                url: `https://voteforgroup30-be.herokuapp.com/api/v1/comments/${comment._id}`,
                 data: commentToEdit,
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -44,7 +44,7 @@ const CommentItem = props => {
             const token = localStorage.getItem("token");
             const option = {
                 method: "delete",
-                url: `/api/v1/comments/${comment._id}`,
+                url: `https://voteforgroup30-be.herokuapp.com/api/v1/comments/${comment._id}`,
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

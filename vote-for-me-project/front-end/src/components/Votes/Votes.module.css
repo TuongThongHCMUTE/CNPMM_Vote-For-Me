@@ -23,5 +23,10 @@
 
 .notification {
     font-size: 18px;
-    color: rgba(208, 29, 29, 1);
+    color: #fff;
+}
+
+.notification a {
+    margin: 0 4px;
+    color: #8167E8;
 }

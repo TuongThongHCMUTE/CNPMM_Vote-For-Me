@@ -24,7 +24,7 @@ const WriteComment = props => {
             const token = localStorage.getItem("token");
             const option = {
                 method: 'post',
-                url: '/api/v1/comments/',
+                url: 'https://voteforgroup30-be.herokuapp.com/api/v1/comments/',
                 data: commentInput,
                 headers: {
                     Authorization: `Bearer ${token}`,

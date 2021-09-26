@@ -73,7 +73,8 @@ exports.updateOneComment = async (req, res, next) =>{
         const {cmtId} = req.params;
 
         // new: true phan hoi lai bai post da update
-        const comment = await Comment.findByIdAndUpdate(cmtId, {...req.body}, {new: true, runValidator: true});
+        const comment = await Comment.findByIdAndUpdate(cmtId, {...req.body},
+                                {new: true, runValidator: true});
 
         res.status(200).json({
             status:'success',

@@ -10,13 +10,13 @@ import classes from './Comments.module.css';
 
 const Comments = () => {
     const { state, dispatch } = useContext(AppContext);
-    const { comments, user } = state;
+    const { comments, user, post } = state;
 
     const getAllComments = useCallback(async () => {
         try {
             const option = {
                 method: "get",
-                url: "/api/v1//posts/614f5e3ae9e78f0c2c2013e0",
+                url: `https://voteforgroup30-be.herokuapp.com/api/v1/posts/${post.id}`,
             }
             const response = await axios(option);
             const comments = response.data.data.comments;
@@ -25,7 +25,7 @@ const Comments = () => {
         } catch (error) {
             console.log(error);
         }
-    }, [dispatch]);
+    }, [dispatch, post.id]);
 
     useEffect(() => {
         getAllComments()

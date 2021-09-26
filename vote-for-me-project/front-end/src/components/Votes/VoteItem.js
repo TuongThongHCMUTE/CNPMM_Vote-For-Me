@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import axios from "axios";
 import AppContext from '../../store/AppContext';
 
@@ -6,11 +6,11 @@ import Button from '../UI/Button';
 import Card from '../UI/Card';
 
 import classes from './VoteItem.module.css';
+import { Link } from 'react-router-dom';
 
 const VoteItem = props => {
-
     const { state, dispatch } = useContext(AppContext);
-    const { votes, user } = state;
+    const { votes, user, post } = state;
 
     let classifiedVotes = [];
     switch (props.status) {
@@ -31,7 +31,7 @@ const VoteItem = props => {
     const totalVotesCount = votes.length;
     const percent = ((classifiedVotesCount / totalVotesCount) * 100).toFixed(0);
 
-    const isVoted = classifiedVotes.find(vote => vote.userId === user.userId);
+    const isVoted = user ? classifiedVotes.find(vote => vote.userId === user.userId) : false;
 
     let progress = '0%';
 
@@ -46,7 +46,7 @@ const VoteItem = props => {
             const token = localStorage.getItem("token");
             const option = {
                 method: "put",
-                url: "/api/v1/posts/vote/614f5e3ae9e78f0c2c2013e0",
+                url: `https://voteforgroup30-be.herokuapp.com/api/v1/posts/vote/${post.id}`,
                 data: { action: props.status },
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -65,23 +65,28 @@ const VoteItem = props => {
     }
 
     const onVoteHandler = () => {
-        editVote();
+        if (user) {
+            editVote();
+        }
     }
 
     return (
         <div className={classes["vote-item"]}>
             <Card>
                 <div className={classes.content}>
-                    {isVoted ? <Button onClick={onVoteHandler} isActive="true">VOTED</Button> : <Button onClick={onVoteHandler}>VOTE</Button>}
+                    
+                    { user && (isVoted 
+                        ? <Button status={props.status} onClick={onVoteHandler} isActive="true">VOTED</Button> 
+                        : <Button status={props.status} onClick={onVoteHandler}>VOTE</Button>)}
                     
                     <div className={classes.status}>{props.status}</div>
                     <div className={classes["voted-result"]}>
-                        <div className={classes["voted-percent"]}>{`${percent}%`}</div>
+                        <div className={`${classes["voted-percent"]} ${classes[`voted-percent--${props.status}`]}`}>{`${percent}%`}</div>
                         <div className={classes["voted-count"]}>{`${classifiedVotesCount}/${totalVotesCount}`}</div>
                     </div>
                 </div>
                 <div className={classes["progress-bar"]}>
-                    <div className={classes["progress-value"]} style={{ width: progress }}></div>
+                    <div className={`${classes["progress-value"]} ${classes[`progress-value--${props.status}`]}`} style={{ width: progress }}></div>
                 </div>
             </Card>
         </div>

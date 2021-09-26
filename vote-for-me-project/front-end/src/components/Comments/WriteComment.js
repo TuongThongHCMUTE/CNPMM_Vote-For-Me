@@ -8,13 +8,19 @@ import sendImage from '../../assets/send.png';
 
 const WriteComment = props => {
     const { state, dispatch } = useContext(AppContext)
-    const { user } = state;
+    const { user, post } = state;
     const [commentInput, setCommentInput] = useState({ content: "" });
     const [errorMessage, setErrorMessage] = useState(null);
     
     const onSubmitHandler = async (e) => {
         try {
             e.preventDefault();
+
+            if (!user) {
+                setErrorMessage("Please login to write your comments!")
+                return;
+            }
+
             const token = localStorage.getItem("token");
             const option = {
                 method: 'post',
@@ -38,6 +44,7 @@ const WriteComment = props => {
 
             // Reset comment
             setCommentInput({ content: "" });
+            setErrorMessage("");
         } catch (error) {
             setErrorMessage(error.response.data.message);
         }
@@ -47,29 +54,32 @@ const WriteComment = props => {
         setCommentInput({ 
             ...commentInput, 
             [e.target.name]: e.target.value,
-            post: "614f5e3ae9e78f0c2c2013e0"
+            post: post.id
         })    
     }
  
     return (
-        <div className={classes["write-comment"]}>
-            <div className={classes.avatar}>
-                <img src={userAvatar} alt='user-avt' />
+        <>
+            <div className={classes["write-comment"]}>
+                <div className={classes.avatar}>
+                    <img src={userAvatar} alt='user-avt' />
+                </div>
+                <form className={classes.comment} onSubmit={onSubmitHandler}>
+                    <input 
+                        className={classes.content} 
+                        name='content'
+                        id='content'
+                        type='textarea' 
+                        value = {commentInput.content}
+                        onChange = {onChangeHandler}
+                        placeholder="Write your comment..." />
+                    <button type="submit" className={classes.send}>
+                        <img src={sendImage} alt='send' />
+                    </button>
+                </form>
             </div>
-            <form className={classes.comment} onSubmit={onSubmitHandler}>
-                <input 
-                    className={classes.content} 
-                    name='content'
-                    id='content'
-                    type='textarea' 
-                    value = {commentInput.content}
-                    onChange = {onChangeHandler}
-                    placeholder="Write your comment..." />
-                <button type="submit" className={classes.send}>
-                    <img src={sendImage} alt='send' />
-                </button>
-            </form>
-        </div>
+            { errorMessage && (<div className={classes["error-message"]}>{errorMessage}</div>)}
+        </>
     )
 }
 

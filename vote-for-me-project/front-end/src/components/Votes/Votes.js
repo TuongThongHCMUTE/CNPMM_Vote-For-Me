@@ -7,13 +7,14 @@ import axios from "axios";
 import classes from "./Votes.module.css";
 
 function Votes() {
-    const { dispatch } = useContext(AppContext);
+    const { state, dispatch } = useContext(AppContext);
+    const { post, user } = state;
 
     const getAllVotes = useCallback(async () => {
         try {
             const option = {
                 method: "get",
-                url: "/api/v1//posts/614f5e3ae9e78f0c2c2013e0",
+                url: `https://voteforgroup30-be.herokuapp.com/api/v1/posts/${post.id}`,
             }
             const response = await axios(option);
             const votes = response.data.data.post.votes;
@@ -22,7 +23,7 @@ function Votes() {
         } catch (error) {
             console.log(error);
         }
-    }, [dispatch]);
+    }, [dispatch, post]);
 
     useEffect(() => {
         getAllVotes()
@@ -33,9 +34,10 @@ function Votes() {
             <Card isTransparent="true" >
                 <h3>What do you think about that?</h3>
                 <div className={classes.line}></div>
-                <VoteItem status="good"></VoteItem>
-                <VoteItem status="fine"></VoteItem>
-                <VoteItem status="bad"></VoteItem>
+                {!user && (<div className={classes.notification}>Please login to vote for me!</div>)}
+                <VoteItem id="good-vote" status="good" />
+                <VoteItem id="fine-vote" status="fine" />
+                <VoteItem id="bad-vote" status="bad" />
             </Card>
         </section>
     )

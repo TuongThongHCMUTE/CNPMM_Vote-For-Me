@@ -19,3 +19,27 @@
     background-color: #3f3f3f;
     color: #fff;
 }
+
+.button.active.good {
+    background-color: rgba(27, 159, 64, 1);
+}
+
+.button.active.fine {
+    background-color: rgba(61, 65, 152, 1);
+}
+
+.button.active.bad {
+    background-color: rgba(208, 29, 29, 1);
+}
+
+.button.active.good:hover {
+    background-color: rgba(27, 159, 64, .8);
+}
+
+.button.active.fine:hover {
+    background-color: rgba(61, 65, 152, .8);
+}
+
+.button.active.bad:hover {
+    background-color: rgba(208, 29, 29, .8);
+}

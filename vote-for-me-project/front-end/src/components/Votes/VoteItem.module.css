@@ -21,6 +21,21 @@
     text-align: center;
 }
 
+.voted-percent--good {
+    background-color: rgba(27, 159, 64, 1);
+    color: #fff;
+}
+
+.voted-percent--fine {
+    background-color: rgba(61, 65, 152, 1);
+    color: #fff;
+}
+
+.voted-percent--bad {
+    background-color: rgba(208, 29, 29, 1);
+    color: #fff;
+}
+
 .voted-result {
     display: flex;
     justify-content: space-between;
@@ -39,4 +54,16 @@
 .progress-value {
     height: 100%;
     background-color: #3f3f3f;
+}
+
+.progress-value--good {
+    background-color: rgba(27, 159, 64, 1);
+}
+
+.progress-value--fine {
+    background-color: rgba(61, 65, 152, 1);
+}
+
+.progress-value--bad {
+    background-color: rgba(208, 29, 29, 1);
 }

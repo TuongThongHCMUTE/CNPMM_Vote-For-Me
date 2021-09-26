@@ -23,7 +23,7 @@ const Login = props => {
             e.preventDefault();
             const option = {
                 method: "post",
-                url: "/api/v1/auth/login",
+                url: "https://voteforgroup30-be.herokuapp.com/api/v1/auth/login",
                 data: userInput,
             };
             const response = await axios(option);
@@ -42,12 +42,20 @@ const Login = props => {
             <Card>
                 <h3>Enter Your Account</h3>
 
+                {errorMessage &&
+                    (Array.isArray(errorMessage) ? (
+                        errorMessage.map((err) => (
+                            <div className={classes["error-message"]}>Error: {err}</div>
+                        ))
+                    ) : (
+                        <div className={classes["error-message"]}>Error: {errorMessage}</div>
+                    ))}
+
                 <form className={classes.form} onSubmit={onSubmitHandler}>
                     <Input input={{
                         id: 'email',
                         type: "email",
                         name: "email",
-                        required: true, 
                         placeholder: "Email",
                         value: userInput.email,
                         onChange: onChangeHandler
@@ -56,7 +64,6 @@ const Login = props => {
                         id: 'password',
                         type: "password",
                         name: "password",
-                        required: true, 
                         placeholder: "Password",
                         value: userInput.password,
                         onChange: onChangeHandler

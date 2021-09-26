@@ -10,7 +10,7 @@ import Post from "./components/Post/Post";
 import AppContext from "./store/AppContext";
 
 function App() {
-  const initialSate = {user: null, comments: [], votes: [] };
+  const initialSate = {user: null, comments: [], votes: [], post: { id: "614fcec5822cd632b437992b" }};
   const [state, dispatch] = useReducer(AppReducer, initialSate);
 
   const checkCurrentUser = useCallback( async () => {
@@ -19,7 +19,7 @@ function App() {
       
       const option = {
         method: "get",
-        url: "api/v1/auth",
+        url: "https://voteforgroup30-be.herokuapp.com/api/v1/auth",
         headers: {
           Authorization: `Bearer ${token}`,
         },

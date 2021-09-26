@@ -77,6 +77,12 @@
     margin: 0 12px;
 }
 
+.user-comment {
+    max-inline-size: 1000px;
+    inline-size: 100%;
+    overflow-wrap: break-word;
+}
+
 .more {
     all: unset;
     background-color: transparent;
@@ -97,7 +103,7 @@
     font-size: 18px;
     padding: 4px;
     margin: 0;
-    color: #8a2b06;
+    color: rgba(208, 29, 29, 1);
 }
 
 .btn-container span {

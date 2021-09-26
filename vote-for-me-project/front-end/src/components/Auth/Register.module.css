@@ -12,8 +12,13 @@
     text-transform: none;
 }
 
+.register .error-message {
+    margin-left: 28px;
+    color: rgba(208, 29, 29, 1);
+}
+
 .register form {
-    margin: 40px 16px 0px;
+    margin: 8px 16px 0px;
     padding: 8px;
 }
 

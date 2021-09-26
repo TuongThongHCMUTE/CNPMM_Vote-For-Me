@@ -50,3 +50,7 @@
     width: 100%;
 }
 
+.error-message {
+    margin-left: 84px;
+    color: rgba(208, 29, 29, 1);
+}

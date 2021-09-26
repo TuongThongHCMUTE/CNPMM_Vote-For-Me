@@ -89,6 +89,7 @@
     width: 30px;
     height: 30px;
     padding: 8px;
+    cursor: pointer;
 }
 
 .btn-container {

@@ -10,6 +10,10 @@
     padding: 0 48px;
 }
 
+.content li {
+    font-size: 18px;
+}
+
 h3 {
     margin: 16px 0;
     font-size: 36px;

@@ -12,13 +12,13 @@ function PostContent() {
                     <h3>TOPIC: Persisting Data with MongoDB by NodeJS</h3>
                     <h5>Main content:</h5>
                     <ul>
-                        <li>...</li>
-                        <li>...</li>
+                        <li>General introduction about NoSQL, MongoDB Database, and MongoDB UI Tools</li>
+                        <li>Built a website "Vote For Me" using MERN STACK with Mongoose and Expressjs Framework</li>
                     </ul>
                     <h5>Link documents:</h5>
                     <ul>
-                        <li>...</li>
-                        <li>...</li>
+                        <li>Documentations about this topic: <a target="_blank" href="youtube.com">Action Link</a></li>
+                        <li>Presentation video about this topic: <a target="_blank" href="https://drive.google.com/drive/folders/1wI725QaJ4SuTLFwsDzw-fhnxNpfaqFar?usp=sharing" rel="noreferrer">Action Link</a></li>
                     </ul>
                 </div>    
             </Card>

@@ -31,8 +31,12 @@
     flex: 1;
     border: none;
     background-color: transparent;
+    font-family: inherit;
     font-size: 18px;
     font-weight: lighter;
+    padding: 8px;
+    resize: none;
+    max-height: 160px !important;
 }
 
 .content:focus {

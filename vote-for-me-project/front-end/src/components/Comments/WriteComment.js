@@ -57,6 +57,11 @@ const WriteComment = props => {
             post: post.id
         })    
     }
+
+    const onKeyDownHandler = (e) => {
+        e.target.style.height = 'inherit';
+        e.target.style.height = `${e.target.scrollHeight}px`; 
+      }
  
     return (
         <>
@@ -65,13 +70,14 @@ const WriteComment = props => {
                     <img src={userAvatar} alt='user-avt' />
                 </div>
                 <form className={classes.comment} onSubmit={onSubmitHandler}>
-                    <input 
+                    <textarea 
                         className={classes.content} 
                         name='content'
                         id='content'
-                        type='textarea' 
                         value = {commentInput.content}
                         onChange = {onChangeHandler}
+                        onKeyDown = {onKeyDownHandler}
+                        rows = '1'
                         placeholder="Write your comment..." />
                     <button type="submit" className={classes.send}>
                         <img src={sendImage} alt='send' />

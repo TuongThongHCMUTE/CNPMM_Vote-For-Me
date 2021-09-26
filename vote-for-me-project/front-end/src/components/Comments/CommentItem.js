@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import axios from 'axios';
 import AppContext from '../../store/AppContext';
+import reactStringReplace from 'react-string-replace';
 
 import classes from './CommentItem.module.css';
 import userAvatar from '../../assets/user-circle.png';
@@ -83,7 +84,9 @@ const CommentItem = props => {
                                 {`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}
                             </p>
                         </div>
-                        <div className={classes["user-comment"]}>{comment.content}</div>
+                        <div className={classes["user-comment"]}>
+                            { reactStringReplace(comment.content, '\n', (match, i) => (<br/>)) }
+                        </div>
                     </div>
                     {comment.isEditable && (<button className={classes.more} onClick={onOpenMore}>
                         <img src={moreImage} alt='more' />
